@@ -1,14 +1,31 @@
-#importing the needed packages
+#importing needed packages
+
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture 
+
+@pytest.fixture
 def driver():
-    
-    chrome_driver = webdriver.Chrome() #To open the browser
-    
-    chrome_driver.get("https://www.guvi.in/")  #to open the url(webpage)
+
+    chrome_options=Options()
+
+    #headless run
+    #chrome_options.add_argument("--headless")
+
+    # to avoid ElementNotInteractableException due to graphical content
+    chrome_options.add_argument("--disable-gpu")
+
+    #To create chrome driver
+    chrome_driver = webdriver.Chrome(chrome_options)
+
+    #To set window size
+    chrome_options.add_argument("--window-size=1920,1080")
+
+    #to open the URL(Web page)
+    chrome_driver.get("https://www.guvi.in/")
+
 
     return chrome_driver
 
