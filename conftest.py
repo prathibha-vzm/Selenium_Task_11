@@ -17,11 +17,11 @@ def driver():
     # to avoid ElementNotInteractableException due to graphical content
     chrome_options.add_argument("--disable-gpu")
 
+    # To set window size
+    chrome_options.add_argument("--window-size=720,880")
+
     #To create chrome driver
     chrome_driver = webdriver.Chrome(chrome_options)
-
-    #To set window size
-    chrome_options.add_argument("--window-size=1920,1080")
 
     #to open the URL(Web page)
     chrome_driver.get("https://www.guvi.in/")
